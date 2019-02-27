@@ -1,5 +1,7 @@
 package guru.springframework.spring5webapp.model;
 
+import org.hibernate.mapping.ToOne;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +17,7 @@ public class Book {
     private String title;
     private String isbn;
 
-    @ManyToOne()
+    @ManyToOne
     private Publisher publisher;
 
     @ManyToMany
@@ -24,6 +26,11 @@ public class Book {
     private Set<Author> authors = new HashSet<>();
 
     public Book() {
+    }
+
+    public Book(String title, String isbn) {
+        this.title = title;
+        this.isbn = isbn;
     }
 
     public Book(String title, String isbn, Publisher publisher) {
